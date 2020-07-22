@@ -1,0 +1,40 @@
+{{/*
+  console
+
+  @author @regisphilibert
+
+  @context Type (.name)
+
+  @access public
+
+  @example - Go Template
+    {{ partial "path" context }}
+    {{ partialCached "path" context "variant" }}
+*/}}
+{{ with .message }}
+  {{ $header := "" }}
+  {{ with $.header }}
+    {{ $header = . }}
+  {{ end }}
+  {{ $type := "warning" }}
+  {{ with $.type }}
+    {{ $type = . }}
+  {{ end }}
+
+  {{ $color := partialCached "tnd-console/private/GetColor" $type }}
+  {{ $log_header := printf "\n%s:\n" $header }}
+  {{ $log_header = printf $color $log_header }}
+
+  {{ if eq $type "warning" }}
+    {{ if ne site.Params.tnd_console.warnings "mute" }}
+      {{ warnf "%s%s" $log_header . }}
+    {{ end }}
+  {{ else if eq $type "error" }}
+    {{ if ne site.Params.tnd_console.errors "mute" }}
+      {{ errorf "%s%s" $log_header . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+
+{{ return true }}

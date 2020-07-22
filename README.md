@@ -1,10 +1,6 @@
-This is a template repo. To start.
+# TND Console Hugo Module
 
-search `{moduleName}` through the project and replace it with the module identifier (ex: `socials` for `hugo-module-tnd-socials`)
-
-# {moduleName} Hugo Module
-
-(intro)
+This modules handles everything about handling styled and precise messages in the build console. It handles warnings and errors
 
 ## Requirements
 
@@ -27,33 +23,31 @@ Configure your project's module to import this module:
 # config.yaml
 module:
   imports:
-  - path: github.com/theNewDynamic/hugo-module-tnd-{moduleName}
+  - path: github.com/theNewDynamic/hugo-module-tnd-console
 ```
 
 ## Usage
 
-### Some Partial/Feature
+WIP
+
+### Console
 
 #### Examples
 
 ### Settings
 
-Settings are added to the project's parameter under the `tnd_{moduleName}` map as shown below.
+Settings are added to the project's parameter under the `tnd_console` map as shown below.
 
 ```yaml
 # config.yaml
 params:
-  tnd_{moduleName}:
-    [...]
+  tnd_console:
+    warnings: mute
+    errors: mute
 ```
+If `warnings`is set to `mute`, the warnings issued by the module won't be printed.
+If `errors`is set to `mute`, the warnings issued by the module won't be printed.
 
-#### Configure Key 1
-
-#### Configure Key 2
-
-#### Defaults
-
-ld copy/paste the above to your settings and append with new extensions.
 
 ## theNewDynamic
 

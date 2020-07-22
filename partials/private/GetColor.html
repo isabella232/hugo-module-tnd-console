@@ -1,0 +1,12 @@
+{{ $color := "warning" }}
+{{ $info := "\033[1;34m%s\033[0m" }}
+{{ $notice := "\033[1;36m%s\033[0m" }}
+{{ $warning := "\033[0;33m%s\033[0m" }}
+{{ $error := "\033[1;31m%s\033[0m" }}
+{{ $debug := "\033[0;36m%s\033[0m" }}
+{{ $colors := dict "info" $info "notice" $notice "warning" $warning "error" $error "debug" $debug }}
+{{ with index $colors . }}
+  {{ $color = . }}
+{{ end }}
+
+{{ return $color }}
